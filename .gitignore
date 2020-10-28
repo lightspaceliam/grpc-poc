@@ -1,0 +1,18 @@
+
+# Ignore any .vs directories and contents.
+
+.vs
+
+
+# Ignore JetBrains Rider configuration folder.
+
+.idea
+
+# Ignore all projects's bin and obj folders and contents.
+
+bin
+obj
+
+# Ignore all {Projects}.proj.user files.
+
+*.user
