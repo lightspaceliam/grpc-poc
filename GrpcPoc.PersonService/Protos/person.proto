@@ -15,10 +15,10 @@ message PeopleRequest {
 }
 
 message PeopleResponse {
-	repeated Person People = 1;
+	repeated PersonGrpc People = 1;
 }
 
-message Person {
+message PersonGrpc {
   int32 Id = 1;
   string FirstName = 2;
   //  TODO: this will be nullable.
