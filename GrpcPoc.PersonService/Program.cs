@@ -1,6 +1,8 @@
 using GrpcPoc.Entities.Extensions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
+using System.Net;
 
 namespace GrpcPoc.PersonService
 {
@@ -17,6 +19,13 @@ namespace GrpcPoc.PersonService
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        options.Listen(IPAddress.Any, 5100, listenOptions =>
+                        {
+                            listenOptions.Protocols = HttpProtocols.Http2;
+                        });
+                    });
                     webBuilder.UseStartup<Startup>();
                     webBuilder.MigrateDatabase();
                 });

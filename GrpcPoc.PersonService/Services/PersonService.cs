@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GrpcPoc.PersonService
 {
-    public class PersonService : PeopleService.PeopleServiceBase
+    public class PersonService : Person.PersonBase
     {
         private readonly ILogger<PersonService> _logger;
         private readonly GrpcPocDbContext _context;
