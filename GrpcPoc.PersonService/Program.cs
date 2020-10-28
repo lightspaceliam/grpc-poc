@@ -28,6 +28,7 @@ namespace GrpcPoc.PersonService
                     });
                     webBuilder.UseStartup<Startup>();
                     webBuilder.MigrateDatabase();
+                    webBuilder.SeedDatabase();
                 });
     }
 }

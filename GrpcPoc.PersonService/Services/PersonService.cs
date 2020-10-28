@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
@@ -31,9 +32,9 @@ namespace GrpcPoc.PersonService
                 {
                     Id = p.Id,
                     FirstName = p.FirstName,
-                    MiddleName = p.MiddleName,
+                    MiddleName = p.MiddleName ?? "",
                     LastName = p.LastName,
-                    DateOfBirth = p.DateOfBirth.ToTimestamp()
+                    DateOfBirth = DateTime.SpecifyKind(p.DateOfBirth, DateTimeKind.Utc).ToTimestamp()
                 })
                 .OrderBy(p => p.LastName)
                 .ToListAsync();
