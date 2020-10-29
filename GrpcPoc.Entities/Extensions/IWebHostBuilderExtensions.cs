@@ -47,6 +47,12 @@ namespace GrpcPoc.Entities.Extensions
 
                     context.People.RemoveRange(people);
                     context.SaveChanges();
+
+                    /**
+                     * Does not reseed identity. Execute the following if required:
+                     * DELETE FROM People;
+                     * DBCC CHECKIDENT ('People', RESEED, 0);
+                     */
                 }
 
                 logger.LogInformation("Seed People");

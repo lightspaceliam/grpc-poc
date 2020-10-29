@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 option csharp_namespace = "GrpcPoc.PersonService";
 
@@ -8,6 +9,8 @@ package PersonObject;
 
 service Person {
   rpc GetPeople (PeopleRequest) returns (PeopleResponse);
+  rpc Insert (PersonRequest) returns (PersonResponse);
+  rpc Find (PersonByIdRequest) returns (PersonByIdResponse);
 }
 
 message PeopleRequest {
@@ -18,11 +21,29 @@ message PeopleResponse {
 	repeated PersonGrpc People = 1;
 }
 
+message PersonRequest {
+  PersonGrpc Person = 1;
+}
+
+message PersonResponse {
+  PersonGrpc Person = 1;
+}
+
+message PersonByIdRequest {
+	int32 Id = 1;
+}
+
+message PersonByIdResponse {
+	PersonGrpc Person = 1;
+}
+
 message PersonGrpc {
   int32 Id = 1;
   string FirstName = 2;
-  //  TODO: this will be nullable.
-  string MiddleName = 3;
+  
+  // Scalar Value of type string.
+  google.protobuf.StringValue MiddleName = 3;
+  
   string LastName = 4;
   google.protobuf.Timestamp DateOfBirth = 5;
 }
