@@ -44,9 +44,10 @@ webBuilder.SeedDatabase();
 ## Resouces
 
 **Official**
-[gRPC services with C#](https://docs.microsoft.com/en-us/aspnet/core/grpc/basics?view=aspnetcore-3.1)
-[Create Protobuf messages for .NET apps](https://docs.microsoft.com/en-us/aspnet/core/grpc/protobuf?view=aspnetcore-3.1)
-[Protobuf scalar data types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types)
+- [Manage Protobuf references with dotnet-grpc](https://docs.microsoft.com/en-us/aspnet/core/grpc/dotnet-grpc?view=aspnetcore-3.1)
+- [gRPC services with C#](https://docs.microsoft.com/en-us/aspnet/core/grpc/basics?view=aspnetcore-3.1)
+- [Create Protobuf messages for .NET apps](https://docs.microsoft.com/en-us/aspnet/core/grpc/protobuf?view=aspnetcore-3.1)
+- [Protobuf scalar data types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types)
 
 **Community**
-[.NET Implementing Microservices with gRPC and .NET Core 3.1 (Andrea Chiarelli)](https://auth0.com/blog/implementing-microservices-grpc-dotnet-core-3/)
+- [.NET Implementing Microservices with gRPC and .NET Core 3.1 (Andrea Chiarelli)](https://auth0.com/blog/implementing-microservices-grpc-dotnet-core-3/)

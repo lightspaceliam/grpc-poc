@@ -3,11 +3,11 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
-option csharp_namespace = "GrpcPoc.PersonService";
+option csharp_namespace = "GrpcPoc.Proto";
 
-package PersonObject;
+package GrpcPerson;
 
-service Person {
+service GrpcPerson {
   rpc GetPeople (PeopleRequest) returns (PeopleResponse);
   rpc Insert (PersonRequest) returns (PersonResponse);
   rpc Find (PersonByIdRequest) returns (PersonByIdResponse);
@@ -18,15 +18,15 @@ message PeopleRequest {
 }
 
 message PeopleResponse {
-	repeated PersonGrpc People = 1;
+	repeated Person People = 1;
 }
 
 message PersonRequest {
-  PersonGrpc Person = 1;
+    Person Person = 1;
 }
 
 message PersonResponse {
-  PersonGrpc Person = 1;
+    Person Person = 1;
 }
 
 message PersonByIdRequest {
@@ -34,10 +34,10 @@ message PersonByIdRequest {
 }
 
 message PersonByIdResponse {
-	PersonGrpc Person = 1;
+	Person Person = 1;
 }
 
-message PersonGrpc {
+message Person {
   int32 Id = 1;
   string FirstName = 2;
   

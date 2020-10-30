@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GrpcPoc.PersonService
 {
-    public class PersonService : Person.PersonBase
+    public class PersonService : Proto.GrpcPerson.GrpcPersonBase
     {
         private readonly ILogger<PersonService> _logger;
         private readonly GrpcPocDbContext _context;
@@ -22,13 +22,13 @@ namespace GrpcPoc.PersonService
             _logger = logger;
         }
 
-        public override async Task<PeopleResponse> GetPeople(PeopleRequest request, ServerCallContext context)
+        public override async Task<Proto.PeopleResponse> GetPeople(Proto.PeopleRequest request, ServerCallContext context)
         {
             _logger.LogInformation($"GetPeople, max records {request.MaxRecords}");
 
             var entities = await _context.People
                 .Take(request.MaxRecords)
-                .Select(p => new PersonGrpc
+                .Select(p => new Proto.Person
                 {
                     Id = p.Id,
                     FirstName = p.FirstName,
@@ -42,13 +42,13 @@ namespace GrpcPoc.PersonService
                 .OrderBy(p => p.LastName)
                 .ToListAsync();
 
-            var response = new PeopleResponse();
+            var response = new Proto.PeopleResponse();
             response.People.AddRange(entities);
 
             return response;
         }
 
-        public override async Task<PersonResponse> Insert(PersonRequest request, ServerCallContext context)
+        public override async Task<Proto.PersonResponse> Insert(Proto.PersonRequest request, ServerCallContext context)
         {
             var dbEntry = new Entities.Person
             {
@@ -63,9 +63,9 @@ namespace GrpcPoc.PersonService
             await _context.People.AddAsync(dbEntry);
             await _context.SaveChangesAsync();
 
-            return new PersonResponse
+            return new Proto.PersonResponse
             {
-                Person = new PersonGrpc
+                Person = new Proto.Person
                 {
                     Id = dbEntry.Id,
                     FirstName = dbEntry.FirstName,
@@ -76,16 +76,16 @@ namespace GrpcPoc.PersonService
             };
         }
 
-        public override async Task<PersonByIdResponse> Find(PersonByIdRequest request, ServerCallContext context)
+        public override async Task<Proto.PersonByIdResponse> Find(Proto.PersonByIdRequest request, ServerCallContext context)
         {
-            var response = new PersonByIdResponse();
+            var response = new Proto.PersonByIdResponse();
 
             var person = await _context.People
                 .FirstOrDefaultAsync(p => p.Id == request.Id);
 
             if(person != null)
             {
-                response.Person = new PersonGrpc
+                response.Person = new Proto.Person
                 {
                     Id = person.Id,
                     FirstName = person.FirstName,

@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using GrpcPoc.PersonService;
 
 namespace GrpcPoc.Api
 {
@@ -29,7 +28,7 @@ namespace GrpcPoc.Api
             services.AddControllers();
 
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            services.AddGrpcClient<Person.PersonClient>(options =>
+            services.AddGrpcClient<Proto.GrpcPerson.GrpcPersonClient>(options =>
             {
                 options.Address = new Uri(Configuration["gRPC:Person"]);
             });

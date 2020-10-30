@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using GrpcPoc.Api.Extensions;
 using GrpcPoc.Api.Models;
-using GrpcPoc.PersonService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -15,9 +14,10 @@ namespace GrpcPoc.Api.Controllers
     public class PersonController : ControllerBase
     {
         private readonly ILogger<PersonController> _logger;
-        private readonly Person.PersonClient _client;
+        private readonly Proto.GrpcPerson.GrpcPersonClient _client;
+        
         public PersonController(
-            Person.PersonClient client,
+            Proto.GrpcPerson.GrpcPersonClient client,
             ILogger<PersonController> logger)
         {
             _client = client;
@@ -27,7 +27,7 @@ namespace GrpcPoc.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PersonDto>>> Index(int maxRecords = 10)
         {
-            var request = new PeopleRequest
+            var request = new Proto.PeopleRequest
             {
                 MaxRecords = maxRecords
             };
@@ -44,9 +44,9 @@ namespace GrpcPoc.Api.Controllers
         [HttpPost("new")]
         public async Task<ActionResult<PersonDto>> Insert(PersonDto person)
         {
-            var request = new PersonRequest
+            var request = new Proto.PersonRequest
             {
-                Person = new PersonGrpc
+                Person = new Proto.Person
                 {
                     Id = person.Id,
                     FirstName = person.FirstName,
@@ -65,7 +65,7 @@ namespace GrpcPoc.Api.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult<PersonDto>> Find(int id)
         {
-            var request = new PersonByIdRequest
+            var request = new Proto.PersonByIdRequest
             {
                 Id = id
             };
