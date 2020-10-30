@@ -1,4 +1,4 @@
-# GrpcPoc - Proto3, .NET Core 3.1^
+# GrpcPoc
 
 After a couple of months of working with a .NET Core flavoured version of gRPC, I decided to explore a little deeper to get a better understanding of how everything worked and try to resolve other issues such as: 
 
