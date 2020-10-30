@@ -1,5 +1,48 @@
 # gRPC POC - Proto3, .NET Core 3.1^
 
+After a couple of months of working with a .NET Core flavoured version of gRPC, I decided to explore a little deeper to get a better understanding of how everything worked and try to resolve other issues such as: 
+
+1. Understanding why gRPC does not supporting nullable model properties
+2. The requirement for duplicating the .proto contract across multiple .NET projects
+
+## Nullable Support
+
+Issue, I have a database table with nullable columns. When I derive the data into my gRPC service I don’t want to have to escape those values manually. I would prefer the framework handle this as I would prefer to reduce complexity and reduce the requirement for extra unit testing. Also when the data is inserted or updated into my database, I want to be able to store null instead of a default value such as a zero, empty string, … Similar to C#, Protobuf does support nullable types, you just have to declare the correct type:
+
+**C#**
+```c#
+public int? MyNallableIntegerProperty { get; set; } 
+```
+**Protobuf**
+```
+google.protobuf.Int32Value MyNallableIntegerProperty = 1;
+```
+
+[Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types#nullable-types)
+
+## Duplicate .proto Contracts
+
+One reason for adding a new project and putting functionality in it is to re-use it across multiple projects. In doing so I initially needed to duplicate the .proto contract across multiple projects. A work colleague discovered this for me:
+
+**Service**
+```xml
+<ItemGroup>
+    <Protobuf 
+      Include="..\Protos\GrpcPerson.proto"
+      Link="Protos\GrpcPerson.proto"
+      GrpcServices="Server" />
+</ItemGroup>
+```
+**Client**
+```xml
+<ItemGroup>
+    <Protobuf
+      Include="..\Protos\GrpcPerson.proto"
+      Link="Protos\GrpcPerson.proto"
+      GrpcServices="Client" />
+</ItemGroup>
+```
+
 ## Tech
 - .NET Core 3.1^
 - gRPC Proto3
