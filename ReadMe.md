@@ -2,8 +2,8 @@
 
 After a couple of months of working with a .NET Core flavoured version of gRPC, I decided to explore a little deeper to get a better understanding of how everything worked and try to resolve other issues such as: 
 
-1. Understanding why gRPC does not supporting nullable model properties
-2. The requirement for duplicating the .proto contract across multiple .NET projects
+1. How to support nullable Model/Protobuf properties without adding custom  validation
+2. Reuse the .proto/Protobuf contract across multiple .NET projects 
 
 ## Nullable Support
 
@@ -14,7 +14,7 @@ Issue, I have a database table with nullable columns. When I derive the data int
 public int? MyNallableIntegerProperty { get; set; } 
 ```
 **Protobuf**
-```
+```proto3
 google.protobuf.Int32Value MyNallableIntegerProperty = 1;
 ```
 

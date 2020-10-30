@@ -22,8 +22,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <!--<ItemGroup>
-    <Protobuf Include="Protos\person.proto" GrpcServices="Client" />
-  </ItemGroup>-->
-
 </Project>
