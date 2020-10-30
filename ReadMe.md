@@ -22,7 +22,7 @@ google.protobuf.Int32Value MyNallableIntegerProperty = 1;
 
 ## Duplicate .proto Contracts
 
-One reason for adding a new project and putting functionality in it is to re-use it across multiple projects. In doing so I initially needed to duplicate the .proto contract across multiple projects. A work colleague discovered this for me:
+One reason for adding a new project and putting functionality in it is to re-use it across multiple projects. In doing so I initially needed to duplicate the .proto contract across multiple projects. A work colleague recently discovered a better solution:
 
 **Service**
 ```xml
