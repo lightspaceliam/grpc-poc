@@ -42,6 +42,7 @@ One reason for adding a new project and putting functionality in it is to re-use
       GrpcServices="Client" />
 </ItemGroup>
 ```
+The .proto contract is no longer duplicated and sits in a directory GrpcPoc/Protos
 
 ## Tech
 - .NET Core 3.1^
