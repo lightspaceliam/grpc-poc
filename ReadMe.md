@@ -7,7 +7,7 @@ After a couple of months of working with a .NET Core flavoured version of gRPC, 
 
 ## Nullable Support
 
-Issue, I have a database table with nullable columns. When I derive the data into my gRPC service I don’t want to have to escape those values manually. I would prefer the framework handle this as I would prefer to reduce complexity and reduce the requirement for extra unit testing. Also when the data is inserted or updated into my database, I want to be able to store null instead of a default value such as a zero, empty string, … Similar to C#, Protobuf does support nullable types, you just have to declare the correct type:
+Issue, I have a database table with nullable columns. When I derive the data into my gRPC service I don’t want to have to escape those values manually. I would prefer the framework handle this as I would prefer to reduce complexity and reduce the requirement for extra unit testing. Also when the data is inserted or updated into my database, I want to be able to store null instead of a default value such as a zero, empty string, … Similar to C#, Protobuf does support nullable types:
 
 **C#**
 ```c#
