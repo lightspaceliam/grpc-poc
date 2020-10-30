@@ -1,4 +1,4 @@
-# gRPC POC - Proto3, .NET Core 3.1^
+# GrpcPoc - Proto3, .NET Core 3.1^
 
 After a couple of months of working with a .NET Core flavoured version of gRPC, I decided to explore a little deeper to get a better understanding of how everything worked and try to resolve other issues such as: 
 
@@ -18,13 +18,13 @@ public int? MyNallableIntegerProperty { get; set; }
 google.protobuf.Int32Value MyNallableIntegerProperty = 1;
 ```
 
-[Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types#nullable-types)
+Reference [Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types#nullable-types)
 
 ## Duplicate .proto Contracts
 
 One reason for adding a new project and putting functionality in it is to re-use it across multiple projects. In doing so I initially needed to duplicate the .proto contract across multiple projects. A work colleague recently discovered a better solution:
 
-**Service**
+**Service GrpcPoc.PersonService/GrpcPoc.PersonService.csproj**
 ```xml
 <ItemGroup>
     <Protobuf 
@@ -33,7 +33,7 @@ One reason for adding a new project and putting functionality in it is to re-use
       GrpcServices="Server" />
 </ItemGroup>
 ```
-**Client**
+**Client GrpcPoc.Api/GrpcPoc.Api.csproj**
 ```xml
 <ItemGroup>
     <Protobuf
