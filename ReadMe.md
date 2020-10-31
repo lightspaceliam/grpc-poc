@@ -20,7 +20,7 @@ google.protobuf.Int32Value MyNullableIntegerProperty = 1;
 
 Reference [Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types#nullable-types)
 
-## Duplicate .proto Contracts
+## Duplicate Protobuf Contracts
 
 One of many reasons for creating an [N-Tier](https://docs.microsoft.com/en-us/visualstudio/data-tools/walkthrough-creating-an-n-tier-data-application?view=vs-2019) application is to separate application components into reusable functionality that can be accessed by one or many projects. In doing so I initially needed to duplicate the Protobuf contract (GrpcPerson.proto) across multiple projects. A work colleague recently discovered a better solution:
 
@@ -42,7 +42,7 @@ One of many reasons for creating an [N-Tier](https://docs.microsoft.com/en-us/vi
       GrpcServices="Client" />
 </ItemGroup>
 ```
-The .proto contract is no longer duplicated and sits in a directory GrpcPoc/Protos
+The Protobuf contract is no longer duplicated and sits in a directory GrpcPoc/Protos
 
 ## Tech
 - .NET Core 3.1^
@@ -61,7 +61,11 @@ Ensure you have the following installed:
 git clone https://github.com/lightspaceliam/grpc-poc.git
 ```
 * Database migrations and seeding is already configured
-* Visual Studio Code or Visual Studio 2019 - you will need to run both GrpcPoc.Api & GrpcPoc.PersonService concurrently
+* Visual Studio Code or Visual Studio 2019 - you will need to run both GrpcPoc.Api & GrpcPoc.PersonService concurrently or run both via the command line by executing the following command in each project directory: 
+```
+dotnet run 
+```
+* Access to your local instance of SQL Server via server name localhost. Alternatively, you can update the connection string found in /GrpcPoc/GrpcPoc.PersonService/appsettings.Development.json ConnectionStrings.SqlConnection
 
 Handy hint, if you want to disable/stop auto migrations and or database seeding, got to /grpc-poc/GrpcPoc.PersonService/Program.cs and comment out:
 ```c#
