@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (GrpcPoc.PersonService)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build GrpcPoc.PersonService",
+            "program": "${workspaceFolder}/GrpcPoc.PersonService/bin/Debug/netcoreapp3.1/GrpcPoc.PersonService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/GrpcPoc.PersonService",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {}
+        },
+        {
+            "name": ".NET Core Launch (GrpcPoc.Api)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build GrpcPoc.Api",
+            "program": "${workspaceFolder}/GrpcPoc.Api/bin/Debug/netcoreapp3.1/GrpcPoc.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/GrpcPoc.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {}
+        },
+    ]
+}
