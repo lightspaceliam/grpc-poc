@@ -11,11 +11,11 @@ Issue, I have a database table with nullable columns. When I derive the data int
 
 **C#**
 ```c#
-public int? MyNallableIntegerProperty { get; set; } 
+public int? MyNullableIntegerProperty { get; set; } 
 ```
 **Protobuf**
 ```proto3
-google.protobuf.Int32Value MyNallableIntegerProperty = 1;
+google.protobuf.Int32Value MyNullableIntegerProperty = 1;
 ```
 
 Reference [Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/grpc-for-wcf-developers/protobuf-data-types#nullable-types)
