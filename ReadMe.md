@@ -22,7 +22,7 @@ Reference [Nullable Types](https://docs.microsoft.com/en-us/dotnet/architecture/
 
 ## Duplicate .proto Contracts
 
-One reason for adding a new project and putting functionality in it is to re-use it across multiple projects. In doing so I initially needed to duplicate the .proto contract across multiple projects. A work colleague recently discovered a better solution:
+One of many reasons for creating an [N-Tier](https://docs.microsoft.com/en-us/visualstudio/data-tools/walkthrough-creating-an-n-tier-data-application?view=vs-2019) application is to separate application components into reusable functionality that can be accessed by one or many projects. In doing so I initially needed to duplicate the Protobuf contract (GrpcPerson.proto) across multiple projects. A work colleague recently discovered a better solution:
 
 **Service GrpcPoc.PersonService/GrpcPoc.PersonService.csproj**
 ```xml
